@@ -5,6 +5,13 @@
 
 using namespace std;
 
+// functions declarations
+void greetAndInstruct();
+void displayBoard (char board[]);
+bool checkIfLegal (int cellNbre, char board[]);
+bool checkWinner(char board[]);
+void computerMove(char board[]);
+
 // greetings!
 void greetAndInstruct() {
     cout << "Hello and welcome to the Tic-Tac-Toe challenge: Player against Computer.\nThe board is numbered from 1 to 27 as per the following:" << endl;
@@ -59,12 +66,12 @@ void displayBoard(char board[]) {
 bool checkIfLegal(int cellNbre, char board[]) {
     bool valid = true;
     if (cellNbre - 1 < 0 || cellNbre - 1 > 27) {
-        bool valid = false;
+        valid = false;
         cout << "Illegal cell number for the move because it is out of range. Please input a different cell number: " << endl;
     }
 
-    if (board[cellNbre-1] != 'n') {
-        bool valid = false;
+    else if (board[cellNbre-1] != 'n') {
+        valid = false;
         cout << "Illegal cell number for the move because it is occupied. Please input a different cell number: " << endl;
     }
 

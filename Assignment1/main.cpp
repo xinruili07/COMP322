@@ -25,12 +25,27 @@ int main() {
         int cellNb;
         cout << "Enter the number of the cells you wanna occupy: ";
         cin >> cellNb;
+        // if not an integer
+        if (cin.fail()){
+            cout << "Please enter an integer. ";
+            // clear error state
+            cin.clear();
+            // discard 'bad' character(s)
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
 
         // reprompt the user while the move stays invalid
         while (!checkIfLegal(cellNb, board)) {
             cin >> cellNb;
+            // if not an integer
+            if (cin.fail()){
+                cout << "Please enter an integer. ";
+                // clear error state
+                cin.clear();
+                // discard 'bad' character(s)
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
         }
-
         board[cellNb-1] = 'X';
         moves++;
         displayBoard(board);
