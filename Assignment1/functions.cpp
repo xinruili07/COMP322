@@ -15,11 +15,11 @@ void computerMove(char board[]);
 // greetings!
 void greetAndInstruct() {
     cout << "Hello and welcome to the Tic-Tac-Toe challenge: Player against Computer.\nThe board is numbered from 1 to 27 as per the following:" << endl;
-    cout << "1 | 2 | 3      10 | 11 | 12        19 | 20 | 21" << endl;
-    cout << "---------      ------------        ------------" << endl;
-    cout << "4 | 5 | 6      13 | 14 | 15        22 | 23 | 24" << endl;
-    cout << "---------      ------------        ------------" << endl;
-    cout << "7 | 8 | 9      16 | 17 | 18        25 | 26 | 27" << endl;
+    cout << "1 | 2 | 3        10 | 11 | 12        19 | 20 | 21" << endl;
+    cout << "---------        ------------        ------------" << endl;
+    cout << "4 | 5 | 6        13 | 14 | 15        22 | 23 | 24" << endl;
+    cout << "---------        ------------        ------------" << endl;
+    cout << "7 | 8 | 9        16 | 17 | 18        25 | 26 | 27" << endl;
     cout << "Player starts first. Simply input the number of the cell you want to occupy. Player’s move is marked with X. Computer’s move is marked with O." << endl;
     cout << "Start? (y/n): ";
 }
