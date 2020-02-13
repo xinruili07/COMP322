@@ -8,9 +8,14 @@ int main() {
     string response;
     cin >> response;
 
-    // exit if no
+    while (response != "n" && response != "y") {
+        cout << "Unrecognized response. Enter y/n: ";
+        cin >> response;
+    }
+
+    // exits if no
     if (response == "n") {
-        return 0;
+            return 0;
     }
 
     // create new board for new game
