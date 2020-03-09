@@ -47,12 +47,7 @@ void displayBoard(char board[]) {
             if (i > 8) {
                 cout << " ";
             }
-            if (board[i] == 'X') {
-                cout << "\033[1;31mX\033[0m";
-            }
-            else {
-                cout << "\033[1;32mO\033[0m";
-            }
+            cout << board[i];
             if (i == 20 || i == 23) {
                 cout << "\n" << "---------       ------------       ------------\n";
                 i -= 18;
@@ -196,7 +191,7 @@ void computerMove(char board[]) {
         }
     }
     // random computer placement
-    srand (time(NULL));
+    srand (123);
     while(true) {
         // generate secret number between 1 and 27
         int index = rand() % 27 + 1;
