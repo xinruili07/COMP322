@@ -4,6 +4,7 @@
 #include <vector> // #include directive
 #include <string>
 
+// Enum representing rank and suit
 enum Rank {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN,
 EIGHT, NINE, TEN, JACK, QUEEN, KING};
 
@@ -44,7 +45,7 @@ class Deck {
 
         void deal(Hand &pHand);
 };
-
+// AbstractPlayer inheriting from Hand
 class AbstractPlayer : public Hand {
     public:
         virtual bool isDrawing() const = 0;
@@ -52,6 +53,7 @@ class AbstractPlayer : public Hand {
         bool isBusted();
 };
 
+// Human and Computer player inheriting from Abstract class
 class HumanPlayer : public AbstractPlayer { 
     public:
         HumanPlayer();

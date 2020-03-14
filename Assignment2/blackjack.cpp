@@ -42,6 +42,7 @@ int Card::getValue() const {
             return 0;   
     }
 }
+// options to display the cards
 void Card::displayCard() const{
     switch(aType) {
         case CLUBS:
@@ -118,7 +119,7 @@ void Card::displayCard() const{
     }
 }
 
-
+// Cards are stored in a vector<Card>. Default vector methods
 void Hand::add(Card card) {
     aHand.push_back(card);
 }
@@ -144,6 +145,7 @@ int Hand::getTotal() const {
         sum += aHand[i].getValue();
     }
 
+    // Checking when ace should be worth 11 versus 1
     if (ace && sum + 10 <= 21) {
         return sum + 10;
     }
@@ -152,6 +154,7 @@ int Hand::getTotal() const {
     }
 }
 
+// initialize all cards in the deck. Cards should not be able to be added to a deck.
 void Deck::populate() {
     aDeck.clear();
     int aRank, aType;
@@ -167,6 +170,7 @@ void Deck::shuffle() {
     random_shuffle(aDeck.begin(), aDeck.end());
 }
 
+// deal a card to a player hand and pop it from the deck
 void Deck::deal(Hand &pHand) {
     Card card = aDeck.back();
     aDeck.pop_back();
@@ -177,7 +181,7 @@ bool AbstractPlayer::isBusted() {
     return getTotal() > 21;
 }
 
-
+// Inherited methods
 HumanPlayer::HumanPlayer() {}
 bool HumanPlayer::isDrawing() const {
     return (getTotal() < 21);
@@ -213,6 +217,7 @@ void BlackJackGame::play() {
 
     newPlayer.displayPlayer();
     char answer = 'y';
+    // Check whether the player would like to draw a card as long as his hand < 21
     while (newPlayer.isDrawing() && answer != 'n') {
         cout << "Do you want to draw? (y/n):";
         cin >> answer;
@@ -232,6 +237,7 @@ void BlackJackGame::play() {
         }
     }
 
+    // The house must draw until hand == 21
     while (m_casino.isDrawing()) {
         if (newPlayer.isBusted()) {
             break;
@@ -244,6 +250,8 @@ void BlackJackGame::play() {
             break;
         }
     }
+
+    // Check for winner
     if (!newPlayer.isBusted()) {
         if (m_casino.isBusted()) {
             cout << "Player wins." << endl; 
@@ -261,7 +269,6 @@ void BlackJackGame::play() {
             cout << "Casino wins." << endl;
         }
     }
-
+    // clear the hand at the end of each game
     m_casino.clear();
-    
 }
